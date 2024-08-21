@@ -4,7 +4,6 @@ import com.as.demo_app.dto.TodoItemDto;
 import com.as.demo_app.services.TodoItemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.persistence.PostUpdate;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;

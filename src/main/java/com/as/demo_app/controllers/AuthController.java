@@ -33,6 +33,7 @@ public class AuthController {
     }
 
     @GetMapping("/get-admin")
+    @Deprecated
     @Operation(summary = "Получить роль ADMIN (для демонстрации)")
     public void getAdmin() {
         userService.getAdmin();
