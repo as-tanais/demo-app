@@ -2,12 +2,10 @@ package com.as.demo_app.controllers;
 
 import com.as.demo_app.dto.TodoItemDto;
 import com.as.demo_app.services.TodoItemService;
-import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
