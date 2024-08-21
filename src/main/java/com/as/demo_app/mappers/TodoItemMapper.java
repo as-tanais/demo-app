@@ -12,7 +12,6 @@ public class TodoItemMapper {
                 .id(todoItem.getId())
                 .title(todoItem.getTitle())
                 .description(todoItem.getDescription())
-                .isComplete(todoItem.isComplete())
                 .createAt(todoItem.getCreateAt())
                 .build()
                 ;
@@ -23,7 +22,6 @@ public class TodoItemMapper {
                 .id(todoItemDto.getId())
                 .title(todoItemDto.getTitle())
                 .description(todoItemDto.getDescription())
-                .isComplete(todoItemDto.isComplete())
                 .createAt(todoItemDto.getCreateAt())
                 .build();
     }

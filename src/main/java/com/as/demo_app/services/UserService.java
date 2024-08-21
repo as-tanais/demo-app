@@ -1,5 +1,6 @@
 package com.as.demo_app.services;
 
+import com.as.demo_app.models.Role;
 import com.as.demo_app.models.User;
 import com.as.demo_app.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -66,5 +67,17 @@ public class UserService {
         // Получение имени пользователя из контекста Spring Security
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return getByUsername(username);
+    }
+
+    /**
+     * Выдача прав администратора текущему пользователю
+     * <p>
+     * Нужен для демонстрации
+     */
+    @Deprecated
+    public void getAdmin() {
+        var user = getCurrentUser();
+        user.setRole(Role.ROLE_ADMIN);
+        save(user);
     }
 }

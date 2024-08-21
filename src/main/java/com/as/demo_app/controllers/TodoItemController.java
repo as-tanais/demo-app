@@ -4,6 +4,7 @@ import com.as.demo_app.dto.TodoItemDto;
 import com.as.demo_app.services.TodoItemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.persistence.PostUpdate;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,7 +20,8 @@ public class TodoItemController {
     private final TodoItemService todoItemService;
 
     @GetMapping
-    @Operation(summary = "Получить список всех задач. Доступен всем.")
+    @Operation(summary = "Получить список всех задач. Доступен только с ролями Admin и User.")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public Collection<TodoItemDto> getAll() {
         return todoItemService.getAll();
     }
@@ -31,9 +33,16 @@ public class TodoItemController {
         return todoItemService.save(todoItemDto);
     }
 
+    @PatchMapping("/{id}")
+    @Operation(summary = "Изменить задачу. Доступен только с ролями Admin и User")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    public TodoItemDto updateTodo(@RequestBody @Valid TodoItemDto todoItemDto, @PathVariable Long id) {
+        return todoItemService.update(id, todoItemDto);
+    }
+
     @DeleteMapping("/{id}")
     @Operation(summary = "Удалить задачу. Доступен только с ролью Admin")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteTodo(@PathVariable Long id) {
         todoItemService.deleteById(id);
     }

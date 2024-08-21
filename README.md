@@ -17,7 +17,7 @@
 
 ## Для старта нужно
 
-* JDK 17+
+* [JDK 21](https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/downloads-list.html)
 * Maven 3+
 
 ## Чтобы создать и запустить проект, выполните следующие действия:
@@ -32,7 +32,7 @@
 
 Описание API доступно http://localhost:8080/swagger-ui/index.html
 
-Для тестов используйте [Postman](https://www.postman.com/)
+Для тестов можно использовать [Swagger](docs/swagger/swagger-test.md) или [Postman](docs/postman/postman-test.md)
 
 
 

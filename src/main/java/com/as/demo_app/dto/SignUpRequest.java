@@ -9,12 +9,11 @@ import lombok.Data;
 @Schema(description = "Запрос на регистрацию")
 public class SignUpRequest {
 
-    @Schema(description = "Имя пользователя", example = "Jon")
-    @Size(min = 5, max = 50, message = "Имя пользователя должно содержать от 5 до 50 символов")
+    @Schema(description = "Имя пользователя", example = "Alex")
     @NotBlank(message = "Имя пользователя не может быть пустыми")
     private String username;
 
-    @Schema(description = "Пароль", example = "my_1secret1_password")
-    @Size(max = 255, message = "Длина пароля должна быть не более 255 символов")
+    @Schema(description = "Пароль", example = "pass123")
+    @NotBlank(message = "Имя пользователя не может быть пустыми")
     private String password;
 }
