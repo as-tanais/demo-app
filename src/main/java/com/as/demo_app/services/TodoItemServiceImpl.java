@@ -7,7 +7,9 @@ import com.as.demo_app.repositories.TodoItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,17 +20,21 @@ public class TodoItemServiceImpl implements TodoItemService{
 
     @Override
     public TodoItemDto save(TodoItemDto todoItemDto) {
+        if (todoItemDto != null) {
+            todoItemDto.setCreateAt(Instant.now());
+        }
+        TodoItem todoItem = todoItemRepository.save(todoItemMapper.toTodoItem(todoItemDto));
+        return todoItemMapper.toTodoItemDto(todoItem);
+    }
+
+    @Override
+    public TodoItemDto update(Long id, TodoItemDto todoItemDto) {
         return null;
     }
 
     @Override
-    public TodoItemDto update(int id, TodoItemDto todoItemDto) {
-        return null;
-    }
-
-    @Override
-    public void deleteById(int id) {
-        //todoItemRepository.deleteById(getById(id));
+    public void deleteById(Long id) {
+        todoItemRepository.deleteById(id);
     }
 
     @Override
@@ -37,7 +43,7 @@ public class TodoItemServiceImpl implements TodoItemService{
     }
 
     @Override
-    public TodoItemDto getById(int id) {
-        return null;
+    public Optional<TodoItem> getById(Long id) {
+        return todoItemRepository.findById(id);
     }
 }
