@@ -27,6 +27,12 @@
 3. Собрать проект: mvn clean install
 4. Запустить проект: mvn spring-boot:run 
 
+## или скачать JAR 
+1. Скачать [demo-app-0.0.1-SNAPSHOT.jar](target%2Fdemo-app-0.0.1-SNAPSHOT.jar)
+2. Перейдите в папку скачивани.
+3. Запустить командой java -jar demo-app-0.0.1-SNAPSHOT.jar
+    - должна быть установлена java и прописана переменная PATH
+
 
 Приложение будет доступно по адресу http://localhost:8080
 
