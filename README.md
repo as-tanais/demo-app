@@ -1,6 +1,5 @@
 # Демо проект: Spring Boot + JWT + Swagger
 
-
 ## Функции
 
 * Регистрации и авторизация пользователя
@@ -14,6 +13,7 @@
 * BCrypt
 * Maven
 * Swagger
+* БД H2 (для упрощения запуска)
 
 ## Для старта нужно
 
@@ -24,9 +24,10 @@
 
 ### Запуск в контейнере Docker
 
-1. Скачать [demo-app-0.0.1-SNAPSHOT.jar](target%2Fdemo-app-0.0.1-SNAPSHOT.jar) 
+1. Скачать [demo-app-0.0.1-SNAPSHOT.jar](target%2Fdemo-app-0.0.1-SNAPSHOT.jar)
 2. Скачать [Dockerfile](Dockerfile) или создать Dockerfile
 3. В Dockerfile. В аргументе ARG JAR_FILE= указать путь до demo-app-0.0.1-SNAPSHOT.jar
+
 ```
    FROM amazoncorretto:21
    ARG JAR_FILE=target/demo-app-0.0.1-SNAPSHOT.jar
@@ -34,36 +35,50 @@
    COPY ${JAR_FILE} app.jar
    ENTRYPOINT ["java","-jar","app.jar"]
 ```
+
 4. Разместить Dockerfile и demo-app-0.0.1-SNAPSHOT.jar в одном и каталоге.
 5. Собрать docker образ командой:
+
 ```
 docker build -t spring-docker-simple:0.0.1 .
 ```
+
 6. Запустить docker контрейнер
+
 ```
 docker run -d -p 8080:8080 -t spring-docker-simple:0.0.1 
 ```
 
 Help по Docker:
+
 1. Сборка образа.
+
 ```
    docker build -t <имя_образа>:<тег> <путь_к_Dockerfile> # сборка образа на основе Dockerfile
 ```
+
 2. Запуск на основе образа.
+
 ```
 docker run <имя_образа> # запуск контейнера на основе указанного образа
 ```
+
 ### Запуск через сборку проекта
+
 1. Склонировать репозиторий и распоковать проект.
 2. Перейдите в каталог проекта.
 3. Собрать проект: mvn clean install
-4. Запустить проект: mvn spring-boot:run 
+4. Запустить проект: mvn spring-boot:run
 
-### Запуск через JAR 
+### Запуск через JAR
+
 1. Скачать [demo-app-0.0.1-SNAPSHOT.jar](target%2Fdemo-app-0.0.1-SNAPSHOT.jar)
 2. Перейдите в папку скачивани.
-3. Запустить командой java -jar demo-app-0.0.1-SNAPSHOT.jar
-    - должна быть установлена java и прописана переменная PATH
+3. Запустить командой
+```
+java -jar demo-app-0.0.1-SNAPSHOT.jar
+```   
+- должна быть установлена java и прописана переменная PATH
 
 ## Использование / Тестирование
 
